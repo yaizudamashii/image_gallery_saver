@@ -50,6 +50,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
         
         PHPhotoLibrary.shared().performChanges( {
             let req = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL.init(fileURLWithPath: path))
+            req?.creationTime = Date()
             if let videoId = req?.placeholderForCreatedAsset?.localIdentifier {
                 videoIds.append(videoId)
             }
@@ -82,6 +83,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
         
         PHPhotoLibrary.shared().performChanges( {
             let req = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            req.creationDate = Date()
             if let imageId = req.placeholderForCreatedAsset?.localIdentifier {
                 imageIds.append(imageId)
             }
@@ -119,6 +121,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
         
         PHPhotoLibrary.shared().performChanges( {
             let req = PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: URL(string: url)!)
+            req?.creationDate = Date()
             if let imageId = req?.placeholderForCreatedAsset?.localIdentifier {
                 imageIds.append(imageId)
             }
