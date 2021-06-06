@@ -50,7 +50,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
         
         PHPhotoLibrary.shared().performChanges( {
             let req = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL.init(fileURLWithPath: path))
-            req?.creationTime = Date()
+            req?.creationDate = Date()
             if let videoId = req?.placeholderForCreatedAsset?.localIdentifier {
                 videoIds.append(videoId)
             }
