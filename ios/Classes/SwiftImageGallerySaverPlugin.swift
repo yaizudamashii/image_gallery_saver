@@ -28,6 +28,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
       } else if (call.method == "saveFileToGallery") {
         guard let arguments = call.arguments as? [String: Any],
               let path = arguments["file"] as? String,
+              let _ = arguments["name"],
               let isReturnFilePath = arguments["isReturnPathOfIOS"] as? Bool else { return }
         if (isImageFile(filename: path)) {
             saveImageAtFileUrl(path, isReturnImagePath: isReturnFilePath)
@@ -167,6 +168,7 @@ public class SwiftImageGallerySaverPlugin: NSObject, FlutterPlugin {
     func isImageFile(filename: String) -> Bool {
         return filename.hasSuffix(".jpg")
             || filename.hasSuffix(".png")
+            || filename.hasSuffix(".jpeg")
             || filename.hasSuffix(".JPEG")
             || filename.hasSuffix(".JPG")
             || filename.hasSuffix(".PNG")
